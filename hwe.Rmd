@@ -1,0 +1,86 @@
+---
+title: "Understanding ANOVA"
+author: "Kay Darko"
+date: "December 1, 2019" "continued ob Dec 9th at African studies library"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an explanation of ANOVA in R.
+ANOVA= One way Analysis of Variance
+is used to analyze the relationship between one X variable(categorical/ factor with independent levels/groups)
+and Y variable which continuous.
+ 
+```
+#Montag<-seq(from=2, to=8, length.out=4) 
+#Dienstag<-Montag-2
+#Mittwoch<-Montag*1.5
+#cat_x<-as.factor(c(Montag,Dienstag,Mittwoch)) created a factor with eight levels instead of three
+
+cat_x1=as.factor(c("Montag", "Dienstag","Mittwoch"))
+
+mat1<-matrix(c(Montag,Dienstag, Mittwoch), nrow=4, ncol=3)
+mat1a<-matrix(c(Montag,Dienstag, Mittwoch), nrow=3, byrow=T) #this what I want 3 x 4 matrix
+mat1b<-matrix(c(Montag,Dienstag, Mittwoch), byrow=T)
+mat1c<-matrix(c(Montag,Dienstag, Mittwoch))
+
+organism<-c("Human","Mouse","Fruit Fly", "Roundworm","Yeast")
+genomeSizeBP<-c(3000000000,3000000000,135600000,97000000,12100000)
+estGeneCount<-c(30000,30000,13061,19099,6034) 
+y<-rnorm(15,9.18,2.29)
+
+y1<-rbinom(3, 10, 0.75)
+
+y2<-rbinom(3,1,0.75)
+y2a<-rbinom(3,2,0.75)
+y2d<-rbinom(3,3,0.75)
+#y2f<-rbinom(3,4,0.75)
+#y2g<-rbinom(3,5,0.75)
+#y2h<-rbinom(3,6,0.75)
+df1<-data.frame(organism=organism,genomeSizeBP=genomeSizeBP,estGeneCount=estGeneCount)
+str(y)
+
+df2<-data.frame(explanatory_var=cat_x1, response_var=y)
+df2_a<-data.frame(explanatory_var=cat_x1, response_var=y1)
+
+Humans<-as.factor(c("baby", "toddler", "teenager"))
+Try1<-as.
+df3<-data.frame(Humans=Humans,)
+
+
+
+library(ggplot2)
+plot1<-ggplot(df2_a,aes(df2_a$explanatory_var, df2_a$response_var))
+p1<-plot1+lab(title="Trial boxplot")
+
+p2<-plot(df2_a$explanatory_var, df2_a$response_var)
+p2
+plot(Humans,y2h)
+
+par(nrow(2))
+boxplot(y, ylim=c(0,15), ylab="Amount of Rainfall", main="#Boxplot", las=1)
+quantile(y, probs=c(0,0.25,0.5,0.75,1))
+
+
+document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
